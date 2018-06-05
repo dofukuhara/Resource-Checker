@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">Resource Checker</string>
+    <string name="test">Test[default]</string>
+
+    <string-array name="string_array_test">
+        <item>Item Pos 1</item>
+        <item>Item Pos 2</item>
+        <item>Item Pos 3</item>
+    </string-array>
+
+    <string name="et_locale_name">Locale Name</string>
+    <string name="et_resource_name">Resource Name</string>
+    <string name="btn_run">RUN CHECK</string>
+    <string name="btn_clear">CLEAR RES.</string>
+
+    <string name="pkg_select">-- Select a Package --</string>
+
+    <string name="res_select">-- Select a Res Type --</string>
+    <string name="res_integer">Integer</string>
+    <string name="res_string">String</string>
+    <string name="res_boolean">Boolean</string>
+    <string name="res_array">Array</string>
+    <string name="res_string_array">String Array</string>
+    <string name="res_integer_array">Integer Array</string>
+    <string name="res_drawable">Drawable</string>
+    <string name="res_mipmap">Mipmap</string>
+
+    <string name="pkg_not_informed">"No Package was informed, please pick one!"</string>
+
+    <string name="app_info_pkg">"Package: "</string>
+    <string name="app_info_name">"App Label (w/ current Locale): "</string>
+    <string name="app_info_localized_name">"App Label [%s]: "</string>
+    <string name="app_info_ver_name">"Version Name: "</string>
+    <string name="app_info_ver_code">"Version Code: "</string>
+
+    <string name="app_info_integer_name">"Integer Resource: "</string>
+    <string name="app_info_integer_value">"Integer Value: "</string>
+    <string name="app_info_integer_not_found">Integer not found within this package!</string>
+
+    <string name="app_info_string_name">"String Resource: "</string>
+    <string name="app_info_cust_locale">"Custom Locale: "</string>
+    <string name="app_info_string_value">"String Value: "</string>
+    <string name="app_info_no_cust_locale">Custom locale not informed</string>
+    <string name="app_info_string_not_found">String not found within this package!</string>
+
+    <string name="app_info_boolean_name">"Boolean Resource: "</string>
+    <string name="app_info_boolean_value">"Boolean Value: "</string>
+    <string name="app_info_boolean_not_found">Boolean not found within this package!</string>
+
+    <string name="app_info_array_name">"Array Resource: "</string>
+    <string name="app_info_array_value">"Array Values: "</string>
+    <string name="app_info_array_not_found">Array not found within this package!</string>
+
+    <string name="app_info_string_array_name">"String Array Resource: "</string>
+    <string name="app_info_string_array_value">"String Array Values: "</string>
+    <string name="app_info_string_array_not_found">String Array not found within this package!</string>
+
+    <string name="app_info_int_array_name">"Integer Array Resource: "</string>
+    <string name="app_info_int_array_value">"Integer Array Values: "</string>
+    <string name="app_info_int_array_not_found">Integer Array not found within this package!</string>
+
+    <string name="app_info_drawable_name">"Drawable Resource: "</string>
+    <string name="app_info_drawable_value">"Drawable Value: "</string>
+    <string name="app_info_drawable_not_found">Drawable not found within this package! Try fetching this as \'MIPMAP\'.</string>
+
+    <string name="app_info_mipmap_name">"Mipmap Resource: "</string>
+    <string name="app_info_mipmap_value">"Mipmap Value: "</string>
+    <string name="app_info_mipmap_not_found">Mipmap not found within this package! Try fetching this as \'DRAWABLE\'.</string>
+</resources>

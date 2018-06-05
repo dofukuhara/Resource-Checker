@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="resource_type">
+        <item>@string/res_select</item>
+        <item>@string/res_integer</item>
+        <item>@string/res_string</item>
+        <item>@string/res_boolean</item>
+        <item>@string/res_array</item>
+        <item>@string/res_string_array</item>
+        <item>@string/res_integer_array</item>
+        <item>@string/res_drawable</item>
+        <item>@string/res_mipmap</item>
+    </array>
+
+    <array name="array_test">
+        <item>@string/test</item>
+        <item>@integer/test</item>
+        <item>@bool/test_false</item>
+        <item>@bool/test_true</item>
+    </array>
+
+</resources>
