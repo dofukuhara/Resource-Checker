@@ -10,27 +10,27 @@ import static com.fdsoft.resourcechecker.utils.Const.ARRAY_RES;
 
 public class AppArray extends AppPackage{
 
-    private String locale;
-    private String arrayRes;
-    private TypedArray typedArrayValue;
+    private String mLocale;
+    private String mArrayRes;
+    private TypedArray mTypeArrayValue;
     private Context mContext;
 
     public AppArray(Context context, String packageName, String locale, String arrayRes) {
         super(context, packageName, locale);
 
-        this.locale = locale;
-        this.arrayRes = arrayRes;
+        this.mLocale = locale;
+        this.mArrayRes = arrayRes;
         this.mContext = context;
         Resources resources = getResourceFromPackage(packageName);
 
         try {
             if (resources != null) {
-                typedArrayValue = resources.obtainTypedArray(resources.getIdentifier(arrayRes, ARRAY_RES, packageName));
+                mTypeArrayValue = resources.obtainTypedArray(resources.getIdentifier(arrayRes, ARRAY_RES, packageName));
             } else {
-                typedArrayValue = null;
+                mTypeArrayValue = null;
             }
         } catch (Resources.NotFoundException nfe) {
-            typedArrayValue = null;
+            mTypeArrayValue = null;
             nfe.printStackTrace();
         }
 
@@ -44,27 +44,27 @@ public class AppArray extends AppPackage{
         sb.append(this.getPackageName());
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_name));
-        sb.append(this.getAppName());
-        if (getLocalizedAppName() != null) {
+        sb.append(this.getmAppName());
+        if (getmLocalizedAppName() != null) {
             sb.append("\n");
-            sb.append(mContext.getString(R.string.app_info_localized_name, locale));
-            sb.append(getLocalizedAppName());
+            sb.append(mContext.getString(R.string.app_info_localized_name, mLocale));
+            sb.append(getmLocalizedAppName());
         }
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_ver_name));
-        sb.append(this.getVersionName());
+        sb.append(this.getmVersionName());
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_ver_code));
-        sb.append(this.getVersionCode());
+        sb.append(this.getmVersionCode());
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_array_name));
-        sb.append(this.arrayRes);
+        sb.append(this.mArrayRes);
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_array_value));
-        if (typedArrayValue != null) {
-            for (int i = 0; i < typedArrayValue.length() ; i++) {
+        if (mTypeArrayValue != null) {
+            for (int i = 0; i < mTypeArrayValue.length() ; i++) {
                 sb.append("\n    [");
-                sb.append(typedArrayValue.peekValue(i).coerceToString());
+                sb.append(mTypeArrayValue.peekValue(i).coerceToString());
                 sb.append("]");
             }
         } else {

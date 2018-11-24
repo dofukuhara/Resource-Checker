@@ -13,22 +13,22 @@ import static com.fdsoft.resourcechecker.utils.Const.STRING_RES;
 
 public class AppString extends AppPackage {
 
-    private String stringRes;
-    private String stringValue;
-    private String locale;
+    private String mStringRes;
+    private String mStringValue;
+    private String mLocale;
     private Context mContext;
 
     public AppString(Context context, String packageName, String locale, String stringRes) {
         super(context, packageName, locale);
 
-        this.stringRes = stringRes;
-        this.locale = locale;
+        this.mStringRes = stringRes;
+        this.mLocale = locale;
         this.mContext = context;
         Resources resources = getResourceFromPackage(packageName);
 
         try {
             if (resources == null) {
-                stringValue = null;
+                mStringValue = null;
             } else {
                 if (!TextUtils.isEmpty(locale)) {
                     Configuration configuration = resources.getConfiguration();
@@ -57,10 +57,10 @@ public class AppString extends AppPackage {
 
                     resources.updateConfiguration(configuration, null);
                 }
-                stringValue = resources.getString(resources.getIdentifier(stringRes, STRING_RES, packageName));
+                mStringValue = resources.getString(resources.getIdentifier(stringRes, STRING_RES, packageName));
             }
         } catch (Resources.NotFoundException nfe) {
-            stringValue = null;
+            mStringValue = null;
             nfe.printStackTrace();
         }
     }
@@ -73,34 +73,34 @@ public class AppString extends AppPackage {
         sb.append(this.getPackageName());
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_name));
-        sb.append(this.getAppName());
-        if (getLocalizedAppName() != null) {
+        sb.append(this.getmAppName());
+        if (getmLocalizedAppName() != null) {
             sb.append("\n");
-            sb.append(mContext.getString(R.string.app_info_localized_name, locale));
-            sb.append(getLocalizedAppName());
+            sb.append(mContext.getString(R.string.app_info_localized_name, mLocale));
+            sb.append(getmLocalizedAppName());
         }
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_ver_name));
-        sb.append(this.getVersionName());
+        sb.append(this.getmVersionName());
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_ver_code));
-        sb.append(this.getVersionCode());
+        sb.append(this.getmVersionCode());
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_string_name));
-        sb.append(this.stringRes);
+        sb.append(this.mStringRes);
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_cust_locale));
-        if (TextUtils.isEmpty(this.locale)) {
+        if (TextUtils.isEmpty(this.mLocale)) {
             sb.append(mContext.getString(R.string.app_info_no_cust_locale));
         } else {
-            sb.append(this.locale);
+            sb.append(this.mLocale);
         }
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_string_value));
-        if (this.stringValue == null) {
+        if (this.mStringValue == null) {
             sb.append(mContext.getString(R.string.app_info_string_not_found));
         } else {
-            sb.append(this.stringValue);
+            sb.append(this.mStringValue);
         }
 
         return sb.toString();

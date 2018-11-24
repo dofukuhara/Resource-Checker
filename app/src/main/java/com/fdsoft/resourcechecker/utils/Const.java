@@ -8,4 +8,5 @@ public class Const {
     public static final String STRING_RES = "string";
     public static final String DRAWABLE_RES = "drawable";
     public static final String MIPMAP_RES = "mipmap";
+    public static final String DIMEN_RES = "dimen";
 }

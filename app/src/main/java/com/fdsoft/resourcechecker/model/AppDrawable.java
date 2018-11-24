@@ -10,27 +10,27 @@ import static com.fdsoft.resourcechecker.utils.Const.DRAWABLE_RES;
 
 public class AppDrawable extends AppPackage {
 
-    private String drawableRes;
-    private Drawable drawableValue;
-    private String locale;
-    private String imgType;
+    private String mDrawableRes;
+    private Drawable mDrawableValue;
+    private String mLocale;
+    private String mImgType;
     private Context mContext;
 
     public AppDrawable(Context context, String packageName, String locale, String drawableRes, String imgType) {
         super(context, packageName, locale);
 
-        this.drawableRes = drawableRes;
-        this.locale = locale;
-        this.imgType = imgType;
+        this.mDrawableRes = drawableRes;
+        this.mLocale = locale;
+        this.mImgType = imgType;
         this.mContext = context;
 
         Resources resources = getResourceFromPackage(packageName);
 
         if (resources == null) {
-            drawableValue = null;
+            mDrawableValue = null;
         } else {
             try {
-                drawableValue = resources.getDrawable(
+                mDrawableValue = resources.getDrawable(
                         resources.getIdentifier(drawableRes, imgType, packageName),
                         null);
             } catch (Resources.NotFoundException nfe) {
@@ -41,7 +41,7 @@ public class AppDrawable extends AppPackage {
     }
 
     public Drawable getDrawableValue() {
-        return drawableValue;
+        return mDrawableValue;
     }
 
     @Override
@@ -52,37 +52,37 @@ public class AppDrawable extends AppPackage {
         sb.append(this.getPackageName());
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_name));
-        sb.append(this.getAppName());
-        if (getLocalizedAppName() != null) {
+        sb.append(this.getmAppName());
+        if (getmLocalizedAppName() != null) {
             sb.append("\n");
-            sb.append(mContext.getString(R.string.app_info_localized_name, locale));
-            sb.append(getLocalizedAppName());
+            sb.append(mContext.getString(R.string.app_info_localized_name, mLocale));
+            sb.append(getmLocalizedAppName());
         }
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_ver_name));
-        sb.append(this.getVersionName());
+        sb.append(this.getmVersionName());
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_ver_code));
-        sb.append(this.getVersionCode());
+        sb.append(this.getmVersionCode());
         sb.append("\n");
 
-        if (DRAWABLE_RES.equals(imgType)) {
+        if (DRAWABLE_RES.equals(mImgType)) {
             sb.append(mContext.getString(R.string.app_info_drawable_name));
         } else {
             // MIPMAP_RES
             sb.append(mContext.getString(R.string.app_info_mipmap_name));
         }
-        sb.append(this.drawableRes);
+        sb.append(this.mDrawableRes);
         sb.append("\n");
 
-        if (DRAWABLE_RES.equals(imgType)) {
+        if (DRAWABLE_RES.equals(mImgType)) {
             sb.append(mContext.getString(R.string.app_info_drawable_value));
         } else {
             // MIPMAP_RES
             sb.append(mContext.getString(R.string.app_info_mipmap_value));
         }
-        if (drawableValue == null) {
-            if (DRAWABLE_RES.equals(imgType)) {
+        if (mDrawableValue == null) {
+            if (DRAWABLE_RES.equals(mImgType)) {
                 sb.append(mContext.getString(R.string.app_info_drawable_not_found));
             } else {
                 sb.append(mContext.getString(R.string.app_info_mipmap_not_found));

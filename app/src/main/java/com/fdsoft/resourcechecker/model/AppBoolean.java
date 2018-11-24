@@ -9,30 +9,26 @@ import static com.fdsoft.resourcechecker.utils.Const.BOOLEAN_RES;
 
 public class AppBoolean extends AppPackage{
 
-    private String booleanRes;
-    private Boolean booleanValue;
-    private String locale;
+    private String mBooleanRes;
+    private Boolean mBooleanValue;
+    private String mLocale;
     private Context mContext;
 
     public AppBoolean(Context context, String packageName, String locale, String booleanRes) {
         super(context, packageName, locale);
 
-        this.booleanRes = booleanRes;
+        this.mBooleanRes = booleanRes;
         this.mContext = context;
-        this.locale = locale;
+        this.mLocale = locale;
         Resources resources = getResourceFromPackage(packageName);
 
         try {
-            booleanValue = resources == null ? null :
+            mBooleanValue = resources == null ? null :
                     resources.getBoolean(resources.getIdentifier(booleanRes, BOOLEAN_RES, packageName));
         } catch (Resources.NotFoundException nfe) {
-            booleanValue = null;
+            mBooleanValue = null;
             nfe.printStackTrace();
         }
-    }
-
-    public boolean getBooleanValue() {
-        return this.booleanValue;
     }
 
     @Override
@@ -43,25 +39,25 @@ public class AppBoolean extends AppPackage{
         sb.append(this.getPackageName());
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_name));
-        sb.append(this.getAppName());
-        if (getLocalizedAppName() != null) {
+        sb.append(this.getmAppName());
+        if (getmLocalizedAppName() != null) {
             sb.append("\n");
-            sb.append(mContext.getString(R.string.app_info_localized_name, locale));
-            sb.append(getLocalizedAppName());
+            sb.append(mContext.getString(R.string.app_info_localized_name, mLocale));
+            sb.append(getmLocalizedAppName());
         }
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_ver_name));
-        sb.append(this.getVersionName());
+        sb.append(this.getmVersionName());
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_ver_code));
-        sb.append(this.getVersionCode());
+        sb.append(this.getmVersionCode());
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_boolean_name));
-        sb.append(this.booleanRes);
+        sb.append(this.mBooleanRes);
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_boolean_value));
-        if (booleanValue != null) {
-            sb.append(booleanValue);
+        if (mBooleanValue != null) {
+            sb.append(mBooleanValue);
         } else {
             sb.append(mContext.getString(R.string.app_info_boolean_not_found));
         }

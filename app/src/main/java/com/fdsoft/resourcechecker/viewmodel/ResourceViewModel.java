@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.fdsoft.resourcechecker.R;
 import com.fdsoft.resourcechecker.model.AppArray;
 import com.fdsoft.resourcechecker.model.AppBoolean;
+import com.fdsoft.resourcechecker.model.AppDimen;
 import com.fdsoft.resourcechecker.model.AppDrawable;
 import com.fdsoft.resourcechecker.model.AppInteger;
 import com.fdsoft.resourcechecker.model.AppIntegerArray;
@@ -32,21 +33,20 @@ public class ResourceViewModel extends ViewModel {
     public ObservableField<String> resourceInfo = new ObservableField<>("");
     public ObservableField<Drawable> resourceDrawable = new ObservableField<>();
 
-    public String resourceType = null;
-    public String resourcePackage = null;
+    private String resourceType = null;
+    private String resourcePackage = null;
 
     public ObservableField<ArrayList<String>> packages = new ObservableField<>();
     public ObservableField<String[]> resType = new ObservableField<>();
 
     private Context mContext;
-    private Packages mPackage;
 
     public void setContext(Context context) {
         mContext = context;
 
-        mPackage = new Packages(mContext);
+        Packages pkgs = new Packages(mContext);
 
-        packages.set(mPackage.getPackages());
+        packages.set(pkgs.getPackages());
         resType.set(mContext.getResources().getStringArray(R.array.resource_type));
     }
 
@@ -97,6 +97,9 @@ public class ResourceViewModel extends ViewModel {
             } else if (mContext.getString(R.string.res_mipmap)
                     .equals(resourceType) && !TextUtils.isEmpty(resourceName.get())) {
                 pkg = new AppDrawable(mContext, resourcePackage, resourceLocaleName.get(), resourceName.get(), MIPMAP_RES);
+            } else if (mContext.getString(R.string.res_dimen)
+                    .equals(resourceType) && !TextUtils.isEmpty(resourceName.get())) {
+                pkg = new AppDimen(mContext, resourcePackage, resourceLocaleName.get(), resourceName.get());
             }
 
             if (pkg == null) {
@@ -107,6 +110,8 @@ public class ResourceViewModel extends ViewModel {
 
             if (pkg instanceof AppDrawable) {
                 resourceDrawable.set(((AppDrawable) pkg).getDrawableValue());
+            } else {
+                resourceDrawable.set(null);
             }
         }
     }

@@ -12,24 +12,24 @@ import java.util.List;
 
 public class Packages {
 
-    private ArrayList<String> packagesList;
+    private ArrayList<String> mPackageList;
 
     public Packages (Context context) {
         PackageManager pm = context.getPackageManager();
         List<ApplicationInfo> appInfoList = pm.getInstalledApplications(0);
 
-        packagesList = new ArrayList<>();
+        mPackageList = new ArrayList<>();
 
-        packagesList.add(context.getString(R.string.pkg_select));
+        mPackageList.add(context.getString(R.string.pkg_select));
 
         for (ApplicationInfo appInfo : appInfoList) {
-            packagesList.add(appInfo.packageName);
+            mPackageList.add(appInfo.packageName);
         }
 
-        Collections.sort(packagesList);
+        Collections.sort(mPackageList);
     }
 
     public ArrayList<String> getPackages() {
-        return packagesList;
+        return mPackageList;
     }
 }

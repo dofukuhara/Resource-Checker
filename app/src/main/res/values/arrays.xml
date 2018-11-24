@@ -11,6 +11,7 @@
         <item>@string/res_integer_array</item>
         <item>@string/res_drawable</item>
         <item>@string/res_mipmap</item>
+        <item>@string/res_dimen</item>
     </array>
 
     <array name="array_test">

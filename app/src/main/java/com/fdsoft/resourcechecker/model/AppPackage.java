@@ -13,44 +13,44 @@ import java.util.Locale;
 
 public class AppPackage {
 
-    private String packageName;
-    private String locale;
-    private String appName;
-    private String localizedAppName;
-    private String versionName;
-    private int versionCode;
+    private String mPackageName;
+    private String mLocale;
+    private String mAppName;
+    private String mLocalizedAppName;
+    private String mVersionName;
+    private int mVersionCode;
 
     private Context mContext;
 
     public AppPackage(Context context, String packageName, String locale) {
         mContext = context;
-        this.locale = locale;
-        this.packageName = packageName;
+        this.mLocale = locale;
+        this.mPackageName = packageName;
 
         PackageManager pm = mContext.getPackageManager();
         PackageInfo pi;
 
 
         try {
-            pi = pm.getPackageInfo(this.packageName, 0);
+            pi = pm.getPackageInfo(this.mPackageName, 0);
         } catch (PackageManager.NameNotFoundException e) {
             pi = null;
             e.printStackTrace();
         }
 
         if (pi != null) {
-            this.appName = pi.applicationInfo.loadLabel(pm).toString();
-            this.versionName = pi.versionName;
-            this.versionCode = pi.versionCode;
+            this.mAppName = pi.applicationInfo.loadLabel(pm).toString();
+            this.mVersionName = pi.versionName;
+            this.mVersionCode = pi.versionCode;
 
             if (TextUtils.isEmpty(locale)) {
-                localizedAppName = null;
+                mLocalizedAppName = null;
             } else {
                 Resources resources = getResourceFromPackage(packageName);
 
                 try {
                     if (resources == null) {
-                        localizedAppName = null;
+                        mLocalizedAppName = null;
                     } else {
                         if (!TextUtils.isEmpty(locale)) {
                             Configuration configuration = resources.getConfiguration();
@@ -78,11 +78,11 @@ public class AppPackage {
                             }
 
                             resources.updateConfiguration(configuration, null);
-                            localizedAppName = resources.getString(pi.applicationInfo.labelRes);
+                            mLocalizedAppName = resources.getString(pi.applicationInfo.labelRes);
                         }
                     }
                 } catch (Resources.NotFoundException nfe) {
-                    localizedAppName = null;
+                    mLocalizedAppName = null;
                     nfe.printStackTrace();
                 }
             }
@@ -94,7 +94,7 @@ public class AppPackage {
         Resources resources;
         PackageManager pm = mContext.getPackageManager();
         try {
-            resources = pm.getResourcesForApplication(packageName);
+            resources = pm.getResourcesForApplication(mPackageName);
         } catch (PackageManager.NameNotFoundException e) {
             resources = null;
             e.printStackTrace();
@@ -104,23 +104,23 @@ public class AppPackage {
     }
 
     public String getPackageName() {
-        return this.packageName;
+        return this.mPackageName;
     }
 
-    public String getAppName() {
-        return this.appName;
+    public String getmAppName() {
+        return this.mAppName;
     }
 
-    public String getLocalizedAppName() {
-        return this.localizedAppName;
+    public String getmLocalizedAppName() {
+        return this.mLocalizedAppName;
     }
 
-    public String getVersionName() {
-        return this.versionName;
+    public String getmVersionName() {
+        return this.mVersionName;
     }
 
-    public int getVersionCode() {
-        return this.versionCode;
+    public int getmVersionCode() {
+        return this.mVersionCode;
     }
 
     @Override
@@ -128,21 +128,21 @@ public class AppPackage {
         StringBuilder sb = new StringBuilder();
 
         sb.append(mContext.getString(R.string.app_info_pkg));
-        sb.append(this.packageName);
+        sb.append(this.mPackageName);
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_name));
-        sb.append(this.appName);
-        if (localizedAppName != null) {
+        sb.append(this.mAppName);
+        if (mLocalizedAppName != null) {
             sb.append("\n");
-            sb.append(mContext.getString(R.string.app_info_localized_name, locale));
-            sb.append(this.localizedAppName);
+            sb.append(mContext.getString(R.string.app_info_localized_name, mLocale));
+            sb.append(this.mLocalizedAppName);
         }
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_ver_name));
-        sb.append(this.versionName);
+        sb.append(this.mVersionName);
         sb.append("\n");
         sb.append(mContext.getString(R.string.app_info_ver_code));
-        sb.append(this.versionCode);
+        sb.append(this.mVersionCode);
 
         return sb.toString();
     }

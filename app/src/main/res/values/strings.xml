@@ -24,6 +24,7 @@
     <string name="res_integer_array">Integer Array</string>
     <string name="res_drawable">Drawable</string>
     <string name="res_mipmap">Mipmap</string>
+    <string name="res_dimen">Dimen</string>
 
     <string name="pkg_not_informed">"No Package was informed, please pick one!"</string>
 
@@ -66,4 +67,10 @@
     <string name="app_info_mipmap_name">"Mipmap Resource: "</string>
     <string name="app_info_mipmap_value">"Mipmap Value: "</string>
     <string name="app_info_mipmap_not_found">Mipmap not found within this package! Try fetching this as \'DRAWABLE\'.</string>
+
+    <string name="app_info_dimen_name">"Dimen Resource: "</string>
+    <string name="app_info_screen_density">"Screen Density: "</string>
+    <string name="app_info_dimen_value_float">"Dimen Value (Float): "</string>
+    <string name="app_info_dimen_value_dip">"Dimen Value (dip): "</string>
+    <string name="app_info_dimen_not_found">Dimen not found within this package!</string>
 </resources>
